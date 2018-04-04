@@ -8,14 +8,16 @@ app.use(cors());
 
 app.use(bodyParser.json());
 
-app.post('/number', function (req, res, next) {
+app.post('/number', (req, res) => {
 
-  if (req.body.isNumber < secretNumber) {
+  const guess = req.body.isNumber;
+
+  if (guess < secretNumber) {
     res.json({
       resultText: 'The number that you are searching for is higher than yor guess.',
       resultCode: 'higher'
     });
-  } else if (req.body.isNumber > secretNumber) {
+  } else if (guess > secretNumber) {
     res.json({
       resultText: 'The number that you are searching for is lower than yor guess.',
       resultCode: 'lower'
@@ -30,4 +32,4 @@ app.post('/number', function (req, res, next) {
 });
 
 
-app.listen(3001, () => console.log('Listening on 3001'));
+app.listen(3001, () => console.log('Listening on port 3001.'));
