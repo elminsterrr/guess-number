@@ -5,10 +5,9 @@ const cors = require('cors');
 const secretNumber = Math.floor(Math.random() * 10000) + 1;
 
 app.use(cors());
-
 app.use(bodyParser.json());
 
-app.post('/number', (req, res) => {
+app.post('/number', (req, res, next) => {
 
   const guess = req.body.isNumber;
 
@@ -19,6 +18,7 @@ app.post('/number', (req, res) => {
       yourGuess: guess
     });
   } else if (guess > secretNumber) {
+    // throw Error('My test error message!');
     res.json({
       resultText: 'The number that you are searching for is lower than yor guess.',
       resultCode: 'lower',
@@ -32,6 +32,13 @@ app.post('/number', (req, res) => {
     });
   }
 
+});
+
+// Error handler
+app.use((err, req, res, next) => {
+  res.status(500);
+  res.json({ error: err.message });
+  console.log(err.message);
 });
 
 

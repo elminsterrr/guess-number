@@ -2,6 +2,10 @@ import _ from 'lodash';
 import axios from 'axios';
 import React, { Component } from 'react';
 
+import Error from '../Error';
+import GuessItem from '../GuessItem';
+import Success from '../Success';
+
 class GuessEngine extends Component {
   constructor(props) {
     super(props);
@@ -10,6 +14,7 @@ class GuessEngine extends Component {
       result: null,
       number: null,
       guesses: [],
+      error: null,
     };
   }
 
@@ -21,59 +26,71 @@ class GuessEngine extends Component {
       })
       .then(response => {
         const { resultCode } = response.data;
-        this.setState({ number: firstGuess });
-        this.setState({ result: resultCode });
+        this.setState({ number: firstGuess, result: resultCode });
       })
-      .catch(error => console.log(error));
+      .catch(error => {
+        console.log(error);
+        this.setState({ error });
+      });
   }
 
-  componentDidUpdate() {
-    if (this.state.result !== 'success') {
-      if (this.state.result === 'lower') {
-        const newNumber = this.state.number - 1;
-        axios
-          .post('http://localhost:3001/number', {
-            isNumber: newNumber,
-          })
-          .then(response => {
-            const { resultCode } = response.data;
-            this.setState({
-              result: resultCode,
-              number: newNumber,
-              guesses: [...this.state.guesses, { newNumber, resultCode }],
+  componentDidUpdate(prevProps, prevState) {
+    const { number, result, guesses } = this.state;
+
+    if (number !== prevState.number || prevState.number === 0) {
+      if (result !== 'success') {
+        if (result === 'lower') {
+          const newNumber = number - 1;
+          axios
+            .post('http://localhost:3001/number', {
+              isNumber: newNumber,
+            })
+            .then(response => {
+              const { resultCode } = response.data;
+              this.setState({
+                result: resultCode,
+                number: newNumber,
+                guesses: [...guesses, { newNumber, resultCode }],
+              });
             });
-          });
-      } else if (this.state.result === 'higher') {
-        const newNumber = this.state.number + 100;
-        axios
-          .post('http://localhost:3001/number', {
-            isNumber: newNumber,
-          })
-          .then(response => {
-            const { resultCode } = response.data;
-            this.setState({
-              result: resultCode,
-              number: newNumber,
-              guesses: [...this.state.guesses, { newNumber, resultCode }],
+        } else if (result === 'higher') {
+          const newNumber = number + 100;
+          axios
+            .post('http://localhost:3001/number', {
+              isNumber: newNumber,
+            })
+            .then(response => {
+              const { resultCode } = response.data;
+              this.setState({
+                result: resultCode,
+                number: newNumber,
+                guesses: [...guesses, { newNumber, resultCode }],
+              });
             });
-          });
+        }
+      } else if (result === 'success') {
+        console.log(`Success! The secret number is ${number}!`);
+      } else {
+        console.log(`Sorry! An error occurred!`);
       }
-    } else if (this.state.result === 'success') {
-      console.log(`Success! The secret number is ${this.state.number}!`);
-    } else {
-      console.log(`Sorry! Some errors occured!`);
     }
   }
 
   render() {
+    const { number, result, guesses, error } = this.state;
+
     return (
       <div>
-        {this.state.guesses.map(guess => (
-          <div key={_.uniqueId('id_')}>
-            Guess is {guess.newNumber} and the we must search for{' '}
-            {guess.resultCode} number!
-          </div>
-        ))}
+        {error && <Error error={error} />}
+        {!error &&
+          guesses.map(guess => (
+            <GuessItem
+              key={_.uniqueId('id_')}
+              resultCode={guess.resultCode}
+              newNumber={guess.newNumber}
+            />
+          ))}
+        {!error && result === 'success' && <Success secretNumber={number} />}
       </div>
     );
   }

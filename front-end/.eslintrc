@@ -1,4 +1,6 @@
 {
   "extends": "callstack-io",
-  "rules": {}
+  "rules": {
+    "no-console": 0
+  }
 }
