@@ -2,7 +2,7 @@ const app = require('express')();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-const secretNumber = 5; //Math.floor(Math.random() * 10000) + 1;
+const secretNumber = Math.floor(Math.random() * 10000) + 1;
 
 app.use(cors());
 
