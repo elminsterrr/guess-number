@@ -15,17 +15,20 @@ app.post('/number', (req, res) => {
   if (guess < secretNumber) {
     res.json({
       resultText: 'The number that you are searching for is higher than yor guess.',
-      resultCode: 'higher'
+      resultCode: 'higher',
+      yourGuess: guess
     });
   } else if (guess > secretNumber) {
     res.json({
       resultText: 'The number that you are searching for is lower than yor guess.',
-      resultCode: 'lower'
+      resultCode: 'lower',
+      yourGuess: guess
     });
   } else {
     res.json({
       resultText: 'Congratulations! You have just found the secret number!',
-      resultCode: 'success'
+      resultCode: 'success',
+      yourGuess: guess
     });
   }
 
