@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import axios from 'axios';
 import React, { Component } from 'react';
 
@@ -6,13 +7,14 @@ class GuessEngine extends Component {
     super(props);
 
     this.state = {
-      number: null,
       result: null,
+      number: null,
+      guesses: [],
     };
   }
 
   componentDidMount() {
-    const firstGuess = 5000;
+    const firstGuess = 0;
     axios
       .post('http://localhost:3001/number', {
         isNumber: firstGuess,
@@ -35,17 +37,25 @@ class GuessEngine extends Component {
           })
           .then(response => {
             const { resultCode } = response.data;
-            this.setState({ result: resultCode, number: newNumber });
+            this.setState({
+              result: resultCode,
+              number: newNumber,
+              guesses: [...this.state.guesses, { newNumber, resultCode }],
+            });
           });
       } else if (this.state.result === 'higher') {
-        const newNumber = this.state.number + 1;
+        const newNumber = this.state.number + 100;
         axios
           .post('http://localhost:3001/number', {
             isNumber: newNumber,
           })
           .then(response => {
             const { resultCode } = response.data;
-            this.setState({ result: resultCode, number: newNumber });
+            this.setState({
+              result: resultCode,
+              number: newNumber,
+              guesses: [...this.state.guesses, { newNumber, resultCode }],
+            });
           });
       }
     } else if (this.state.result === 'success') {
@@ -56,7 +66,16 @@ class GuessEngine extends Component {
   }
 
   render() {
-    return <div>Test</div>;
+    return (
+      <div>
+        {this.state.guesses.map(guess => (
+          <div key={_.uniqueId('id_')}>
+            Guess is {guess.newNumber} and the we must search for{' '}
+            {guess.resultCode} number!
+          </div>
+        ))}
+      </div>
+    );
   }
 }
 
