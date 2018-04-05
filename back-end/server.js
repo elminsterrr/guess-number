@@ -18,7 +18,6 @@ app.post('/number', (req, res, next) => {
       yourGuess: guess
     });
   } else if (guess > secretNumber) {
-    // throw Error('My test error message!');
     res.json({
       resultText: 'The number that you are searching for is lower than yor guess.',
       resultCode: 'lower',
