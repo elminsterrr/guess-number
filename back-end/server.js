@@ -2,10 +2,17 @@ const app = require('express')();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-const secretNumber = Math.floor(Math.random() * 10000) + 1;
+let secretNumber = null;
 
 app.use(cors());
 app.use(bodyParser.json());
+
+app.get('/', (req, res, next) => {
+  secretNumber = Math.floor(Math.random() * 10000) + 1;
+  res.json({
+    serverStatus: 'ready'
+  });
+})
 
 app.post('/number', (req, res, next) => {
 

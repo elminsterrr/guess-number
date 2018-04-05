@@ -15,18 +15,17 @@ class GuessEngine extends Component {
       number: null,
       guesses: [],
       error: null,
+      serverStatus: null,
     };
   }
 
   componentDidMount() {
-    const firstGuess = 0;
+    const initialGuess = 0;
     axios
-      .post('http://localhost:3001/number', {
-        isNumber: firstGuess,
-      })
+      .get('http://localhost:3001/')
       .then(response => {
-        const { resultCode } = response.data;
-        this.setState({ number: firstGuess, result: resultCode });
+        const { serverStatus } = response.data;
+        this.setState({ number: initialGuess, serverStatus });
       })
       .catch(error => {
         console.log(error);
@@ -53,7 +52,7 @@ class GuessEngine extends Component {
                 guesses: [...guesses, { newNumber, resultCode }],
               });
             });
-        } else if (result === 'higher') {
+        } else {
           const newNumber = number + 100;
           axios
             .post('http://localhost:3001/number', {
@@ -71,7 +70,7 @@ class GuessEngine extends Component {
       } else if (result === 'success') {
         console.log(`Success! The secret number is ${number}!`);
       } else {
-        console.log(`Sorry! An error occurred!`);
+        console.log(`Sorry! An unexpected error occurred!`);
       }
     }
   }

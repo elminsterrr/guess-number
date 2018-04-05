@@ -24,4 +24,8 @@ describe('GuessEngine', () => {
   it('initializes the `state` with error property', () => {
     expect(guessEngine.state().error).toEqual(null);
   });
+
+  it('initializes the `state` with serverStatus property', () => {
+    expect(guessEngine.state().serverStatus).toEqual(null);
+  });
 });
