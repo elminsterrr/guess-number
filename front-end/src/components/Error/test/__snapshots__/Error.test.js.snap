@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App renders correctly 1`] = `
+exports[`Error renders correctly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <App />,
+  Symbol(enzyme.__unrendered__): <Error />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -18,12 +18,17 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <p>
-          The Secret Number Finder has started.
+        <p
+          className="Error-message"
+>
+          We are sorry, but something went wrong.
 </p>,
-        <GuessEngine />,
+        <p
+          className="Error-message"
+>
+          !
+</p>,
       ],
-      "className": "App-container",
     },
     "ref": null,
     "rendered": Array [
@@ -32,20 +37,30 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": "The Secret Number Finder has started.",
+          "children": "We are sorry, but something went wrong.",
+          "className": "Error-message",
         },
         "ref": null,
-        "rendered": "The Secret Number Finder has started.",
+        "rendered": "We are sorry, but something went wrong.",
         "type": "p",
       },
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
-        "props": Object {},
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            undefined,
+            "!",
+          ],
+          "className": "Error-message",
+        },
         "ref": null,
-        "rendered": null,
-        "type": [Function],
+        "rendered": Array [
+          undefined,
+          "!",
+        ],
+        "type": "p",
       },
     ],
     "type": "div",
@@ -57,12 +72,17 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <p>
-            The Secret Number Finder has started.
+          <p
+            className="Error-message"
+>
+            We are sorry, but something went wrong.
 </p>,
-          <GuessEngine />,
+          <p
+            className="Error-message"
+>
+            !
+</p>,
         ],
-        "className": "App-container",
       },
       "ref": null,
       "rendered": Array [
@@ -71,20 +91,30 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": "The Secret Number Finder has started.",
+            "children": "We are sorry, but something went wrong.",
+            "className": "Error-message",
           },
           "ref": null,
-          "rendered": "The Secret Number Finder has started.",
+          "rendered": "We are sorry, but something went wrong.",
           "type": "p",
         },
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
-          "props": Object {},
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              undefined,
+              "!",
+            ],
+            "className": "Error-message",
+          },
           "ref": null,
-          "rendered": null,
-          "type": [Function],
+          "rendered": Array [
+            undefined,
+            "!",
+          ],
+          "type": "p",
         },
       ],
       "type": "div",

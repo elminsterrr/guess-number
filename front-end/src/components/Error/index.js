@@ -3,7 +3,8 @@ import './style.css';
 
 const Error = props => (
   <div>
-    <p className="Error-message">Error message: {props.error.toString()}!</p>
+    <p className="Error-message">We are sorry, but something went wrong.</p>
+    <p className="Error-message">{props.error && props.error.toString()}!</p>
   </div>
 );
 

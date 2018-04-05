@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App renders correctly 1`] = `
+exports[`GuessItem renders correctly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <App />,
+  Symbol(enzyme.__unrendered__): <GuessItem />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -18,35 +18,48 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <p>
-          The Secret Number Finder has started.
-</p>,
-        <GuessEngine />,
+        "Guess is ",
+        <span
+          className="GuessItem-span"
+/>,
+        " and we must search for the ",
+        <span
+          className="GuessItem-span"
+/>,
+        " ",
+        "number!",
       ],
-      "className": "App-container",
     },
     "ref": null,
     "rendered": Array [
+      "Guess is ",
       Object {
         "instance": null,
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": "The Secret Number Finder has started.",
+          "children": undefined,
+          "className": "GuessItem-span",
         },
         "ref": null,
-        "rendered": "The Secret Number Finder has started.",
-        "type": "p",
+        "rendered": null,
+        "type": "span",
       },
+      " and we must search for the ",
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
-        "props": Object {},
+        "nodeType": "host",
+        "props": Object {
+          "children": undefined,
+          "className": "GuessItem-span",
+        },
         "ref": null,
         "rendered": null,
-        "type": [Function],
+        "type": "span",
       },
+      " ",
+      "number!",
     ],
     "type": "div",
   },
@@ -57,35 +70,48 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <p>
-            The Secret Number Finder has started.
-</p>,
-          <GuessEngine />,
+          "Guess is ",
+          <span
+            className="GuessItem-span"
+/>,
+          " and we must search for the ",
+          <span
+            className="GuessItem-span"
+/>,
+          " ",
+          "number!",
         ],
-        "className": "App-container",
       },
       "ref": null,
       "rendered": Array [
+        "Guess is ",
         Object {
           "instance": null,
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": "The Secret Number Finder has started.",
+            "children": undefined,
+            "className": "GuessItem-span",
           },
           "ref": null,
-          "rendered": "The Secret Number Finder has started.",
-          "type": "p",
+          "rendered": null,
+          "type": "span",
         },
+        " and we must search for the ",
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
-          "props": Object {},
+          "nodeType": "host",
+          "props": Object {
+            "children": undefined,
+            "className": "GuessItem-span",
+          },
           "ref": null,
           "rendered": null,
-          "type": [Function],
+          "type": "span",
         },
+        " ",
+        "number!",
       ],
       "type": "div",
     },

@@ -5,7 +5,7 @@ import GuessEngine from '../GuessEngine';
 
 const App = () => (
   <div className="App-container">
-    <h3>The Secret Number Finder</h3>
+    <p>The Secret Number Finder has started.</p>
     <GuessEngine />
   </div>
 );
