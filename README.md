@@ -1,6 +1,5 @@
 # guess-number
 
-
 ## Back-end
 
 Open a Terminal and run:
@@ -17,7 +16,6 @@ Start the app by typing:
 ```sh
 npm start
 ```
-
 
 ## Front-end
 
@@ -36,7 +34,6 @@ Start the server by typing:
 npm start
 ```
 
-
 ### Browser
 
 In your browser go to:
@@ -50,5 +47,5 @@ http://localhost:3000/
 Start testing by typing:
 
 ```sh
-npm run test
+npm test
 ```
