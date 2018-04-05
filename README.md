@@ -1,6 +1,5 @@
 # guess-number
 
-## Getting Started
 
 ## Back-end
 
@@ -31,7 +30,7 @@ npm install
 
 ### Usage
 
-Start the app by typing:
+Start the server by typing:
 
 ```sh
 npm start
