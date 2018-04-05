@@ -67,10 +67,8 @@ class GuessEngine extends Component {
               });
             });
         }
-      } else if (result === 'success') {
-        console.log(`Success! The secret number is ${number}!`);
       } else {
-        console.log(`Sorry! An unexpected error occurred!`);
+        console.log(`Success! The secret number is ${number}!`);
       }
     }
   }
