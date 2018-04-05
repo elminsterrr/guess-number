@@ -11,7 +11,7 @@ npm install
 
 ### Usage
 
-Start the app by typing:
+Start the server by typing:
 
 ```sh
 npm start
@@ -28,7 +28,7 @@ npm install
 
 ### Usage
 
-Start the server by typing:
+Start the app by typing:
 
 ```sh
 npm start
