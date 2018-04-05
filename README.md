@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-### Back-end
+## Back-end
 
 Open a Terminal and run:
 
@@ -20,7 +20,7 @@ npm start
 ```
 
 
-### Front-end
+## Front-end
 
 Open a Terminal and run:
 
